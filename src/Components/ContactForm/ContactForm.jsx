@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { nanoid } from "nanoid";
 import { useId } from "react";
 import css from "./ContactForm.module.css";
-import { addContact } from "../../redux/contactsSlice";
+import { addContacts } from "../../redux/operations";
 import { useDispatch } from "react-redux";
 
 const userSchema = Yup.object().shape({
@@ -24,7 +24,7 @@ export default function ContactForm() {
 
   const dispatch = useDispatch();
   const handleAddContact = (newContact) => {
-    dispatch(addContact(newContact));
+    dispatch(addContacts(newContact));
   };
 
   return (
@@ -38,7 +38,7 @@ export default function ContactForm() {
         const newContact = {
           id: nanoid(),
           name: values.name.replace(/\b\w/g, (l) => l.toUpperCase()),
-          number: values.number,
+          phone: values.number,
         };
 
         handleAddContact(newContact);

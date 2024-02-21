@@ -2,13 +2,13 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { FaPhone } from "react-icons/fa6";
 import css from "./Contact.module.css";
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsSlice";
+import { deleteContacts } from "../../redux/operations";
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
 
   const handleDeleteContact = () => {
-    dispatch(deleteContact(contact.id));
+    dispatch(deleteContacts(contact.id));
   };
 
   return (
@@ -19,7 +19,7 @@ export const Contact = ({ contact }) => {
         </p>
         <p className={css.par}>
           {" "}
-          <FaPhone /> {contact.number}
+          <FaPhone /> {contact.phone}
         </p>
       </div>
       <div className={css.btnCont}>
